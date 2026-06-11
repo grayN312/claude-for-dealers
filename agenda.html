@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Agenda — Claude for Dealers Intensive</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Archivo+Black&family=Libre+Franklin:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --orange:#E0561F;
+  --orange-bright:#F26522;
+  --navy:#16243D;
+  --navy-deep:#0E1A2E;
+  --cream:#F4F0E9;
+  --cream-2:#EAE4D8;
+  --ink:#15233B;
+  --slate:#46536b;
+  --line:rgba(22,36,61,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Libre Franklin',sans-serif;background:var(--cream);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.55}
+.wrap{max-width:1100px;margin:0 auto;padding:0 28px}
+
+/* ---------- TOP BAR ---------- */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(244,240,233,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar .row{display:flex;align-items:center;justify-content:space-between;height:68px;gap:18px}
+.brand{display:flex;align-items:center;gap:14px}
+.spark{width:30px;height:30px;flex:0 0 auto}
+.brand .name{font-family:'Libre Franklin';font-weight:800;font-size:1.35rem;letter-spacing:-.02em;color:var(--ink)}
+.brand .by{font-size:.62rem;letter-spacing:.18em;font-weight:700;color:var(--orange);text-transform:uppercase}
+.brand .divider{width:1px;height:26px;background:var(--line);margin:0 4px}
+.brand .seg{font-size:.66rem;letter-spacing:.14em;font-weight:700;text-transform:uppercase;color:#5b6678;text-align:right;line-height:1.4}
+.nav-links{display:flex;align-items:center;gap:8px;margin-left:auto}
+.nav-link{font-size:.78rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--navy);text-decoration:none;padding:9px 16px;border-radius:3px;transition:.2s;white-space:nowrap}
+.nav-link:hover{background:var(--cream-2)}
+.nav-link.active{color:var(--orange)}
+.nav-cta{background:var(--orange);color:#fff;font-weight:800;font-size:.76rem;letter-spacing:.06em;text-transform:uppercase;padding:12px 20px;border-radius:3px;text-decoration:none;transition:.2s;white-space:nowrap}
+.nav-cta:hover{background:var(--orange-bright);transform:translateY(-1px)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;background:var(--cream);overflow:hidden;padding:78px 0 56px}
+.hero::before{content:"";position:absolute;top:-180px;right:-140px;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(224,86,31,.08),transparent 70%)}
+.hero::after{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:46px 46px;-webkit-mask-image:radial-gradient(640px 440px at 80% 6%,#000,transparent 75%);mask-image:radial-gradient(640px 440px at 80% 6%,#000,transparent 75%);opacity:.45}
+.hero .wrap{position:relative;z-index:2}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;font-weight:800;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:22px}
+.eyebrow .dot{width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px rgba(224,86,31,.2)}
+h1{font-family:'Archivo Black';font-size:clamp(2.8rem,7vw,5.2rem);line-height:.9;letter-spacing:-.02em;color:var(--navy);text-transform:uppercase}
+h1 .accent{color:var(--orange);display:block}
+.lede{font-size:clamp(1.05rem,2.2vw,1.35rem);color:var(--slate);max-width:660px;margin-top:24px;font-weight:500;line-height:1.5}
+.lede strong{color:var(--ink);font-weight:800}
+.meta-row{display:flex;flex-wrap:wrap;gap:11px;margin-top:30px}
+.chip{font-size:.82rem;font-weight:700;letter-spacing:.02em;background:#fff;border:1px solid var(--line);border-radius:100px;padding:10px 18px;color:var(--navy);display:inline-flex;align-items:center;gap:9px;box-shadow:0 2px 8px rgba(20,38,74,.04)}
+.chip b{color:var(--orange);font-size:1rem}
+
+/* ---------- DAY ANCHOR NAV ---------- */
+.daynav{position:sticky;top:68px;z-index:40;background:var(--cream-2);border-bottom:1px solid var(--line)}
+.daynav .wrap{display:flex;gap:8px;padding-top:12px;padding-bottom:12px;overflow-x:auto}
+.daynav a{flex:0 0 auto;font-size:.74rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--navy);text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:100px;padding:9px 18px;transition:.2s}
+.daynav a:hover{border-color:var(--orange);color:var(--orange)}
+
+/* ---------- DAY BLOCK ---------- */
+section.day{padding:60px 0 8px}
+section.day:last-of-type{padding-bottom:56px}
+.day-head{display:flex;align-items:flex-start;gap:20px;margin-bottom:34px}
+.day-badge{font-family:'Archivo Black';font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:var(--orange);padding:9px 14px;border-radius:6px;white-space:nowrap;margin-top:8px}
+.day-head h2{font-family:'Archivo Black';text-transform:uppercase;font-size:clamp(1.9rem,4.6vw,3.2rem);line-height:.95;color:var(--navy);letter-spacing:-.01em}
+.day-head .window{font-size:.92rem;color:var(--slate);font-weight:700;margin-top:8px;letter-spacing:.02em}
+.day-head .window b{color:var(--orange)}
+
+/* ---------- TIMELINE ---------- */
+.timeline{position:relative;margin-left:6px;border-left:2px solid var(--line);padding-left:0}
+.slot{position:relative;display:grid;grid-template-columns:118px 1fr;gap:22px;padding:0 0 26px 30px}
+.slot::before{content:"";position:absolute;left:-7px;top:5px;width:12px;height:12px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 4px var(--cream)}
+.slot.feature::before{background:var(--navy);box-shadow:0 0 0 4px var(--cream),0 0 0 6px var(--orange)}
+.slot .time{font-family:'Archivo',sans-serif;font-weight:700;font-size:.92rem;color:var(--navy);padding-top:1px}
+.slot .time .dur{display:block;font-size:.72rem;font-weight:600;color:var(--slate);letter-spacing:.04em;margin-top:3px;text-transform:uppercase}
+.slot .what{font-size:1.05rem;font-weight:700;color:var(--ink);line-height:1.35}
+.slot .what .note{display:block;font-size:.9rem;font-weight:500;color:var(--slate);margin-top:4px}
+.slot.feature .what{color:var(--orange)}
+.slot.feature .what .note{color:var(--slate)}
+
+/* meal/break style */
+.slot.soft .what{font-weight:600;color:var(--slate)}
+.slot.soft::before{background:#c9b9a3;box-shadow:0 0 0 4px var(--cream)}
+
+/* evening sub-band */
+.evening{background:var(--navy-deep);color:#eaf1fb;border-radius:14px;padding:30px 32px;margin-top:14px;position:relative;overflow:hidden}
+.evening::before{content:"";position:absolute;top:-40px;right:-30px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(224,86,31,.3),transparent 70%)}
+.evening .elabel{font-size:.68rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--orange-bright);margin-bottom:8px;position:relative}
+.evening h3{font-family:'Archivo Black';text-transform:uppercase;font-size:1.5rem;letter-spacing:-.01em;position:relative;margin-bottom:6px}
+.evening p{font-size:.95rem;color:#c5d4ea;position:relative}
+
+.divider-band{background:var(--cream-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* ---------- CTA ---------- */
+.cta{background:var(--navy-deep);color:#fff;text-align:center;padding:72px 0;position:relative;overflow:hidden}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(560px 300px at 50% 0%,rgba(224,86,31,.26),transparent 65%)}
+.cta .wrap{position:relative}
+.cta .eyebrow{color:var(--orange-bright);justify-content:center}
+.cta h2{font-family:'Archivo Black';text-transform:uppercase;font-size:clamp(2.2rem,6vw,4rem);line-height:.95;letter-spacing:-.01em;margin-bottom:16px}
+.cta p{font-size:1.1rem;color:#bcd0ee;max-width:560px;margin:0 auto 32px}
+.btn-primary{display:inline-block;background:var(--orange);color:#fff;font-weight:800;font-size:.92rem;letter-spacing:.04em;text-transform:uppercase;padding:18px 34px;border-radius:3px;text-decoration:none;transition:.2s;box-shadow:0 10px 30px rgba(224,86,31,.34)}
+.btn-primary:hover{background:var(--orange-bright);transform:translateY(-2px)}
+.cta .fine{margin-top:24px;font-size:.8rem;color:#8aa3c9;letter-spacing:.04em}
+
+/* ---------- FOOTER ---------- */
+.strip{background:var(--orange);color:#fff;text-align:center;padding:22px 0;font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.82rem}
+.strip .o{color:var(--navy-deep)}
+footer{background:var(--navy-deep);color:#7d8799;text-align:center;padding:28px 0;font-size:.78rem;letter-spacing:.04em}
+footer b{color:#cdd5e2}
+
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:760px){
+  .brand .seg,.brand .divider{display:none}
+  .slot{grid-template-columns:92px 1fr;gap:14px;padding-left:24px}
+  .slot .time{font-size:.82rem}
+  .slot .what{font-size:.98rem}
+  .day-head{gap:14px}
+  .nav-link{padding:8px 9px;font-size:.66rem}
+  .nav-cta{padding:10px 12px;font-size:.64rem}
+  .brand .name{font-size:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="wrap row">
+    <div class="brand">
+      <div class="seg">Dealer Education<br>Workshop Featuring</div>
+      <div class="divider"></div>
+      <svg class="spark" viewBox="0 0 40 40" fill="none"><g fill="#E0561F"><rect x="18.5" y="0" width="3" height="40" rx="1.5"/><rect x="0" y="18.5" width="40" height="3" rx="1.5"/><rect x="18.5" y="0" width="3" height="40" rx="1.5" transform="rotate(45 20 20)"/><rect x="18.5" y="0" width="3" height="40" rx="1.5" transform="rotate(-45 20 20)"/><rect x="18.5" y="0" width="3" height="40" rx="1.5" transform="rotate(22.5 20 20)"/><rect x="18.5" y="0" width="3" height="40" rx="1.5" transform="rotate(-22.5 20 20)"/><rect x="18.5" y="0" width="3" height="40" rx="1.5" transform="rotate(67.5 20 20)"/><rect x="18.5" y="0" width="3" height="40" rx="1.5" transform="rotate(-67.5 20 20)"/></g></svg>
+      <div>
+        <div class="name">Claude</div>
+        <div class="by">By Anthropic</div>
+      </div>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html" class="nav-link">The Workshop</a>
+      <a href="intensive.html" class="nav-link">Takeaways</a>
+      <a href="agenda.html" class="nav-link active">Agenda</a>
+      <a href="index.html#register" class="nav-cta">Register Now</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>The In-Person Intensive · Full Agenda</span>
+    <h1>Three Days.<span class="accent">Every Minute Earns Its Spot.</span></h1>
+    <p class="lede">A welcome reception, a full foundation day, and a hands-on build day. Here's <strong>exactly how the time runs</strong> — from the first handshake to the closing keynote.</p>
+    <div class="meta-row">
+      <span class="chip"><b>◷</b> Mon eve + 2 full days</span>
+      <span class="chip"><b>◆</b> Hands-on, not lecture</span>
+      <span class="chip"><b>★</b> $5,000 giveaway · guest keynote</span>
+    </div>
+  </div>
+</section>
+
+<!-- DAY ANCHOR NAV -->
+<div class="daynav">
+  <div class="wrap">
+    <a href="#monday">Mon · Welcome</a>
+    <a href="#tuesday">Tue · Foundation</a>
+    <a href="#wednesday">Wed · Build Day</a>
+  </div>
+</div>
+
+<!-- MONDAY -->
+<section class="day" id="monday">
+  <div class="wrap">
+    <div class="day-head reveal">
+      <span class="day-badge">Monday</span>
+      <div>
+        <h2>The Welcome Reception</h2>
+        <div class="window"><b>6:00 PM</b> – 9:00 PM</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="slot reveal"><div class="time">6:00 PM</div><div class="what">Doors open &amp; registration</div></div>
+      <div class="slot reveal"><div class="time">6:30 PM</div><div class="what">Brief welcome from Gray</div></div>
+      <div class="slot soft reveal"><div class="time">7:00 PM</div><div class="what">Hors d'oeuvres, drinks &amp; networking</div></div>
+      <div class="slot feature reveal"><div class="time">7:45 PM</div><div class="what">Welcome presentation + $5,000 giveaway<span class="note">The room finds out what they're walking into — and someone walks out richer.</span></div></div>
+      <div class="slot soft reveal"><div class="time">8:15 PM</div><div class="what">Networking continues</div></div>
+      <div class="slot reveal"><div class="time">9:00 PM</div><div class="what">Reception closes</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TUESDAY -->
+<section class="day divider-band" id="tuesday">
+  <div class="wrap">
+    <div class="day-head reveal">
+      <span class="day-badge">Tuesday</span>
+      <div>
+        <h2>The Foundation</h2>
+        <div class="window"><b>7:00 AM</b> – 6:15 PM</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="slot soft reveal"><div class="time">7:00 AM<span class="dur">60 min</span></div><div class="what">Breakfast</div></div>
+      <div class="slot reveal"><div class="time">8:00 AM<span class="dur">30 min</span></div><div class="what">Welcome from Brian &amp; Gray</div></div>
+      <div class="slot reveal"><div class="time">8:30 AM<span class="dur">30 min</span></div><div class="what">Oh My AI: State of AI + Group Pulse Check</div></div>
+      <div class="slot reveal"><div class="time">9:00 AM<span class="dur">45 min</span></div><div class="what">The Prompt: More Than a Few Sentences</div></div>
+      <div class="slot soft reveal"><div class="time">9:45 AM<span class="dur">15 min</span></div><div class="what">Break</div></div>
+      <div class="slot feature reveal"><div class="time">10:00 AM<span class="dur">90 min</span></div><div class="what">Group Build: A Full Marketing Mix in 90 Minutes<span class="note">First real build of the event — done together, start to finish.</span></div></div>
+      <div class="slot reveal"><div class="time">11:30 AM<span class="dur">45 min</span></div><div class="what">Guardrails &amp; Parameters: MD Knowledge Files</div></div>
+      <div class="slot reveal"><div class="time">12:15 PM<span class="dur">30 min</span></div><div class="what">Legal &amp; Other AI Considerations</div></div>
+      <div class="slot soft reveal"><div class="time">12:45 PM<span class="dur">60 min</span></div><div class="what">Lunch</div></div>
+      <div class="slot reveal"><div class="time">1:45 PM<span class="dur">45 min</span></div><div class="what">Claude Projects, Skills &amp; What You Get Out of Claude</div></div>
+      <div class="slot reveal"><div class="time">2:30 PM<span class="dur">45 min</span></div><div class="what">Live Site Scraping: Terminal &amp; Code</div></div>
+      <div class="slot soft reveal"><div class="time">3:15 PM<span class="dur">30 min</span></div><div class="what">Beer Break + Presentation</div></div>
+      <div class="slot feature reveal"><div class="time">3:45 PM<span class="dur">120 min</span></div><div class="what">Build a Team in Two Hours<span class="note">Stand up a four-role digital team, live, in your own account.</span></div></div>
+      <div class="slot reveal"><div class="time">5:45 PM<span class="dur">30 min</span></div><div class="what">Day Recap &amp; What Tomorrow Brings</div></div>
+    </div>
+    <div class="evening reveal">
+      <div class="elabel">Tuesday Evening · 6:30 PM – 9:30 PM</div>
+      <h3>Group Dinner</h3>
+      <p>Sit down together. The best conversations of the week tend to happen here.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WEDNESDAY -->
+<section class="day" id="wednesday">
+  <div class="wrap">
+    <div class="day-head reveal">
+      <span class="day-badge">Wednesday</span>
+      <div>
+        <h2>The Build Day</h2>
+        <div class="window"><b>7:00 AM</b> – 5:30 PM</div>
+      </div>
+    </div>
+    <div class="timeline">
+      <div class="slot soft reveal"><div class="time">7:00 AM<span class="dur">60 min</span></div><div class="what">Breakfast</div></div>
+      <div class="slot feature reveal"><div class="time">8:00 AM<span class="dur">120 min</span></div><div class="what">Claude Co-Work: Your First Autonomous Workflow<span class="note">Hand a real task to AI and watch it run end to end.</span></div></div>
+      <div class="slot soft reveal"><div class="time">10:00 AM<span class="dur">15 min</span></div><div class="what">Break</div></div>
+      <div class="slot feature reveal"><div class="time">10:15 AM<span class="dur">120 min</span></div><div class="what">Claude Design: On-Brand Output, Not Slop<span class="note">Make AI produce work that actually looks like your brand.</span></div></div>
+      <div class="slot soft reveal"><div class="time">12:15 PM<span class="dur">60 min</span></div><div class="what">Lunch</div></div>
+      <div class="slot reveal"><div class="time">1:15 PM<span class="dur">60 min</span></div><div class="what">Group Build: Something For Your Store</div></div>
+      <div class="slot reveal"><div class="time">2:15 PM<span class="dur">60 min</span></div><div class="what">Group Show &amp; Tell</div></div>
+      <div class="slot soft reveal"><div class="time">3:15 PM<span class="dur">60 min</span></div><div class="what">Beer Break + Presentation</div></div>
+      <div class="slot feature reveal"><div class="time">4:15 PM<span class="dur">45 min</span></div><div class="what">Guest Keynote Speaker<span class="note">A headline voice from the industry closes the build.</span></div></div>
+      <div class="slot reveal"><div class="time">5:00 PM<span class="dur">30 min</span></div><div class="what">Wrap, Thank You &amp; Close. Ciao.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>Capped attendance</span>
+    <h2>Save Your Seat</h2>
+    <p>Dates, location, and pricing land first with the list. Hands-on means the room only holds so many.</p>
+    <a href="index.html#register" class="btn-primary">Register Now →</a>
+    <p class="fine">1 helper for every 12 attendees · agenda subject to refinement</p>
+  </div>
+</div>
+
+<div class="strip">Learn It. Build It. Deploy It. <span class="o">Win With It.</span></div>
+<footer>Oh My AI — Demystifying AI &nbsp;·&nbsp; by <b>The Digerati Group</b> &nbsp;·&nbsp; Powered by Claude</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(Math.min(i%8,6)*45)+'ms';io.observe(el)});
+</script>
+</body>
+</html>
